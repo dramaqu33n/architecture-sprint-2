@@ -2,10 +2,16 @@
 
 ## Как запустить
 
+Переходим в директорию
+
+```shell
+cd sharding-repl-cache
+```
+
 Запускаем mongodb и приложение
 
 ```shell
-docker compose up -d
+docker-compose up -d
 ```
 
 Заполняем mongodb данными
@@ -13,6 +19,8 @@ docker compose up -d
 ```shell
 ./scripts/mongo-init.sh
 ```
+
+В процессе работы скрипта будут инициализированы три инстанса конфигурационного сервера, два шарда mongodb с тремя репликами для каждого, роутер, redis-кеш и приложение. База наполнится данными
 
 ## Как проверить
 
@@ -33,3 +41,9 @@ curl --silent http://ifconfig.me
 ## Доступные эндпоинты
 
 Список доступных эндпоинтов, swagger http://<ip виртуальной машины>:8080/docs
+
+## Как остановить
+
+```shell
+docker-compose down -v
+```
